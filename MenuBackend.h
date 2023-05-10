@@ -181,7 +181,6 @@ struct MenuUseEvent {
 
 typedef void (*cb_change)(MenuChangeEvent);
 typedef void (*cb_use)(MenuUseEvent);
-typedef MenuItem& MenuItemRef;
 
 class MenuBackend {
   public:
@@ -196,11 +195,11 @@ class MenuBackend {
       current = rootMi;
     }
 
-    MenuItemRef getRoot() {
-      return *root;
+    MenuItem *getRoot() {
+      return root;
     }
-    MenuItemRef getCurrent() {
-      return *current;
+    MenuItem *getCurrent() {
+      return current;
     }
 
     void moveBack() {
@@ -238,7 +237,7 @@ class MenuBackend {
     }
 
     void toRoot() {
-      setCurrent(&getRoot());
+      setCurrent(getRoot());
     }
 
   private:
