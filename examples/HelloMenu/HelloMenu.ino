@@ -13,6 +13,8 @@
 			300 ms
 			400 ms
 */
+void menuUseEvent(MenuUseEvent used);
+void menuChangeEvent(MenuChangeEvent changed);
 
 //this controls the menu backend and the event generation
 MenuBackend menu = MenuBackend(menuUseEvent,menuChangeEvent);
@@ -32,7 +34,7 @@ void menuSetup()
 {
 	Serial.println("Setting up menu...");
 	//add the file menu to the menu root
-	menu.getRoot().add(settings); 
+  menu.setRoot(&settings);
 		//setup the settings menu item
 		settings.addRight(pin);
 			//we want looping both up and down
