@@ -54,6 +54,14 @@ class MenuItem {
       before = right = after = left = 0;
     }
 
+    /**
+     * Sets the name of the MenuItem
+     */
+    void setFlashName(const __FlashStringHelper* itemName, char shortKey='\0' ) {
+        flash_name = itemName;
+        shortkey = shortKey;
+    }
+
     const char* getName() const { return name; }
     const __FlashStringHelper* getFlashName() const { return flash_name; }
 
@@ -153,7 +161,7 @@ class MenuItem {
   protected:
     const char* name;
     const __FlashStringHelper* flash_name;
-    const char shortkey;
+    char shortkey;
 
     MenuItem *before;
     MenuItem *right;
