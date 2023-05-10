@@ -45,7 +45,7 @@ class MenuItem {
   friend class MenuBackend;
 
   public:
-    MenuItem(const char* itemName, char shortKey='\0' ) : name(itemName), shortkey(shortKey) {
+      MenuItem(const char* itemName = NULL, char shortKey='\0' ) : name(itemName), shortkey(shortKey) {
       flash_name = NULL;
       before = right = after = left = 0;
     }
