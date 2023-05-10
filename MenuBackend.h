@@ -186,15 +186,18 @@ typedef MenuItem& MenuItemRef;
 class MenuBackend {
   public:
 
-    MenuBackend(cb_use menuUse, cb_change menuChange = 0) : root("MenuRoot") {
-      current = &root;
-      root.left = &root;
+    MenuBackend(cb_use menuUse, cb_change menuChange = 0) {
       cb_menuChange = menuChange;
       cb_menuUse = menuUse;
     }
 
+    void setRoot(MenuItem *rootMi) {
+      root = rootMi;
+      current = rootMi;
+    }
+
     MenuItemRef getRoot() {
-      return root;
+      return *root;
     }
     MenuItemRef getCurrent() {
       return *current;
@@ -222,7 +225,7 @@ class MenuBackend {
 
     void use(char shortkey)
     {
-      recursiveSearch(shortkey,&root);
+      recursiveSearch(shortkey, root);
       use();
     }
 
@@ -299,7 +302,7 @@ class MenuBackend {
       }
     }
 
-    MenuItem root;
+    MenuItem *root;
     MenuItem *current;
 
     cb_change cb_menuChange;
