@@ -33,7 +33,6 @@
 #define MenuBackend_h
 
 #include <Arduino.h>
-#include <String.h>
 
 /*
    A menu item will be a container for an item that is a part of a menu
